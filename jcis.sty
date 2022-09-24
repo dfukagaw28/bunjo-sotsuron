@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 文化情報学部卒業論文概要スタイルファイル
+\typeout{jcis.sty ver.1.3a 2015/12/9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{indentfirst}
+\usepackage{wrapfig}
+\usepackage{natbib}
+\usepackage{setspace}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% 入力値取得
+% 表題 \title
+\def\title#1{\def\@title{#1}}
+
+% 副題 \subtitle
+\def\subtitle#1{\def\@subtitle{#1}}
+
+% 年度 \year
+\def\year#1{\def\@year{#1}}
+
+% 学籍番号 \studentID
+\def\studentID#1{\def\@studentID{#1}}
+
+% 著者名 \author
+\def\author#1{\def\@author{#1}}
+
+% 主担当 \mainAdviser
+\def\mainAdviser#1{\def\@mainAdviser{#1}}
+
+% 副担当 \subAdviser
+\def\subAdviserFirst#1{\def\@subAdviserFirst{#1}}
+\def\subAdviserSecond#1{\def\@subAdviserSecond{#1}}
+\def\subAdviserThird#1{\def\@subAdviserThird{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 余白の設定
+\setlength{\topmargin}{5mm}
+\addtolength{\topmargin}{-1in}
+\setlength{\textheight}{260mm}
+\setlength{\oddsidemargin}{18mm}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{18mm}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\textwidth}{173mm}
+
+
+%% ページ番号非表示
+\thispagestyle{empty}
+
+
+%% 行間の変更
+\renewcommand{\baselinestretch}{0.8}
+
+
+%% 見出し表示形式変更
+\renewcommand{\thesection}{{\rmfamily\bfseries{\large{\arabic{section}.}}}}
+\renewcommand{\thesubsection}{{\rmfamily\bfseries\large{{\arabic{section}.\arabic{subsection}.}}}}
+\renewcommand{\thesubsubsection}{{\rmfamily\bfseries{\large{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}}}}
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+{\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+{.1\Cvs \@plus.3\Cdp}%
+{\reset@font\large\rmfamily\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+{\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+{.1\Cvs \@plus.3\Cdp}%
+{\reset@font\large\rmfamily\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+{\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
+{.1\Cvs \@plus.3\Cdp}%
+{\reset@font\large\rmfamily\bfseries}}
+
+%% \maketitle 再定義
+\def\maketitle{
+	% 表題表示
+	\twocolumn[
+		\begin{center}
+			\rmfamily\bfseries
+			\begin{singlespace}
+				{\LARGE \@title\par}
+				{\Large \@subtitle\par}
+			\end{singlespace}
+		\end{center}
+                \def\null{null}
+		\vspace{1mm}
+
+		% 著者名
+		\begin{flushright}
+			\begin{singlespace}
+				\rmfamily\bfseries
+				{\Large \@studentID 　\ \@author\par}
+				{\large 主担当教員 }
+				{\large \@mainAdviser}
+				\ifx\@subAdviserFirst\null
+				\else
+          {\large \ \ \ 副担当教員 }
+					{\large \@subAdviserFirst}
+				\fi
+%				{\large \@subAdviserFirst}
+%                                % \def\null{null}
+				\ifx\@subAdviserSecond\null
+				\else
+					{\large ・ \@subAdviserSecond}
+				\fi
+				\ifx\@subAdviserThird\null
+				\else
+					{\large ・ \@subAdviserThird}
+				\fi
+			\end{singlespace}
+		\end{flushright}
+		\vspace{4mm}
+	]
+}

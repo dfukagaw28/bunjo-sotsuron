@@ -1,0 +1,405 @@
+%   2008/04/10 初版作成．
+%   2013/12/12 第八版作成
+%
+%\typeout{同志社大学文化情報学部卒業/修士/博士論文用スタイルファイル}
+
+%%
+%% ページ・レイアウト
+%%
+\def\baselinestretch{1.18}
+\topmargin=-10mm
+\oddsidemargin=2.5mm
+\evensidemargin=5mm
+\textheight=240mm	% 40行(11pt)
+\textwidth=150mm	% 41字(11pt)
+
+%%
+%%  段落
+%%
+\parindent=1zw		% 段落の頭の字下げ
+
+%%
+%%  論文種類
+%%
+\def\course#1{\def\@course{#1}}
+
+%%
+%%  入学年度
+%%
+\def\eyear#1{\def\@eyear{#1}}
+
+%%
+%%  卒業年度
+%%
+\def\gyear#1{\def\@gyear{#1}}
+
+%%
+%% 所属学部
+%%
+\def\faculty#1{\def\@faculty{#1}}
+
+%%
+%% 所属学科
+%%
+\def\@department{文化情報}
+\def\department#1{\def\@department{#1}}
+
+%%
+%% 学籍番号
+%%
+\def\@studentid{\verb|\studentid|を指定して下さい}
+\def\studentid#1{\def\@studentid{#1}}
+
+
+\def\@facultyb{文化情報学部}%
+\def\@departmentsfxb{学科}%
+\def\@thesisb{卒 業 論 文}%
+
+
+\def\@facultym{文化情報学研究科}%
+\def\@departmentsfxm{研究科}%
+\def\@thesism{修 士 論 文}%
+
+
+\def\@facultyd{文化情報学研究科}%
+\def\@departmentsfxd{研究科}%
+\def\@thesisd{博 士 論 文}%
+
+
+%%
+%% 担当教員
+%%
+\newcommand{\advisers}[8]{
+        \def\firstposition{#1}
+        \def\firstadviser{#2}
+        \def\secondposition{#3}
+        \def\secondadviser{#4}
+        \def\thirdposition{#5}
+        \def\thirdadviser{#6}
+        \def\fourthposition{#7}
+        \def\fourthadviser{#8}
+}
+\newcommand{\supervisers}[8]{
+        \def\firstposition{#1}
+        \def\firstadviser{#2}
+        \def\secondposition{#3}
+        \def\secondadviser{#4}
+        \def\thirdposition{#5}
+        \def\thirdadviser{#6}
+}
+%%
+%%  表紙
+%%
+\newcommand{\makecover}{%
+\def\b{bachelor}
+\ifx\@course\b
+  \begin{titlepage}
+    \vspace*{10mm}
+    \begin{center}
+      {\huge \@gyear 年度\hspace*{5mm}\@thesisb\par}
+      \vfill
+      {\huge\textbf \@title\par}		% タイトル
+      \vfill
+      \vspace*{60mm}
+      {\Large \@eyear 年度入学\par}             % 入学年度
+      \vspace*{5mm}
+      {\LARGE \@studentid \hspace*{5mm} \@author\par}
+                                                % 学籍番号 氏名
+      \vspace*{15mm}
+      {\Large
+      \begin{tabular}{ll}
+        \firstposition & \firstadviser \\ 
+        \secondposition & \secondadviser \\ 
+        \thirdposition & \thirdadviser \\ 
+        \fourthposition & \fourthadviser \\ 
+      \end{tabular} \par}
+      \vspace*{10mm}
+      {\Large \@date\par}			% 提出年月日
+      \vspace*{5mm}
+      {\Large 同志社大学\@facultyb\@department\@departmentsfxb}
+      \vspace{10mm}
+    \end{center}
+  \end{titlepage}
+\fi
+\def\m{master}
+\ifx\@course\m
+  \begin{titlepage}
+    \vspace*{10mm}
+    \begin{center}
+      {\LARGE \@gyear 年度\hspace*{5mm}\@thesism\par}
+      \vspace*{10mm}
+      {\huge\textbf \@title\par}			% タイトル
+      \vspace{40mm}
+      {\LARGE 同志社大学大学院\hspace*{2mm}\@facultym\par}
+      {\LARGE \@department\par}
+      \vspace{10mm}
+      {\LARGE \@studentid\par}
+       \vspace{2mm}
+       {\LARGE \@author\par}
+      \vspace{40mm}
+      {\LARGE
+      \begin{tabular}{ll}
+        \firstposition & \firstadviser \\ 
+        \secondposition & \secondadviser \\ 
+        \thirdposition & \thirdadviser \\ 
+      \end{tabular} \par}
+      \vspace*{10mm}
+      {\LARGE \@date 提出\par}			% 提出年月日
+    \end{center}
+  \end{titlepage}
+\fi
+\def\d{doctor}
+\ifx\@course\d
+  \begin{titlepage}
+  	\vspace*{10mm}
+    \begin{center}
+      {\huge \@thesisd \par}
+      \vfill
+      {\huge\textbf \@title\par}			% タイトル
+      \vfill
+      \vspace{45mm}
+      {\Large \@facultyd\@department\par}
+      \vspace{5mm}
+      {\Large \@eyear 年度入学\par}             % 入学年度
+      \vspace{3mm}
+      {\LARGE \@studentid\par}                  % 学籍番号
+      \vspace{25mm}
+    \end{center}
+  \end{titlepage}
+\fi
+}
+
+%%
+%%  中表紙
+%%
+\newcommand{\makeicover}{%
+\def\b{bachelor}
+\ifx\@course\b
+  \begin{titlepage}
+    \vspace*{10mm}
+    \begin{center}
+      {\huge \@gyear 年度\hspace*{5mm}\@thesisb \par}
+      \vfill
+      {\huge\textbf \@title \par}		% タイトル
+      \vfill
+      \vspace*{20mm}
+      {\LARGE 同志社大学\@facultyb\@department\@departmentsfxb \par}
+      \vspace*{5mm}
+      {\LARGE \@studentid \par}                 % 学籍番号
+      \vspace*{2mm}
+      {\LARGE \@author \par}                 % 氏名
+      \vspace*{40mm}
+      {\Large
+      \begin{tabular}{ll}
+        \firstposition & \firstadviser \\ 
+        \secondposition & \secondadviser \\ 
+        \thirdposition & \thirdadviser \\ 
+        \fourthposition & \fourthadviser \\ 
+      \end{tabular} \par}
+      \vspace*{20mm}
+      {\Large \@date\par}			% 提出年月日
+    \end{center}
+  \end{titlepage}
+\fi
+\def\m{master}
+\ifx\@course\m
+  \begin{titlepage}
+    \vspace*{10mm}
+    \begin{center}
+      {\LARGE \@gyear 年度\hspace*{5mm}\@thesism\par}
+      \vspace*{10mm}
+      {\huge\textbf \@title\par}			% タイトル
+      \vspace{40mm}
+      {\LARGE 同志社大学大学院\hspace*{2mm}\@facultym\par}
+      {\LARGE \@department\par}
+      \vspace{10mm}
+      {\LARGE \@studentid\par}
+      \vspace{50mm}
+      {\LARGE
+      \begin{tabular}{ll}
+        \firstposition & \firstadviser \\ 
+        \secondposition & \secondadviser \\ 
+        \thirdposition & \thirdadviser \\ 
+      \end{tabular} \par}
+      \vspace*{10mm}
+      {\LARGE \@date 提出\par}			% 提出年月日
+    \end{center}
+  \end{titlepage}
+\fi
+\def\d{doctor}
+\ifx\@course\d
+  \begin{titlepage}
+    \vspace*{30mm}
+    \begin{center}
+      {\huge\textbf \@title\par}			% タイトル
+      \vfill
+      \vspace{45mm}
+      {\LARGE \@facultyd\@department\par}
+      \vspace{10mm}
+      %%{\LARGE \@eyear 年度入学\par}             % 入学年度
+      %%\vspace{3mm}
+      {\LARGE \@studentid \par}                 % 学籍番号
+      \vspace{65mm}
+    \end{center}
+  \end{titlepage}
+\fi
+}
+
+%%
+%%  写真ページ
+%%
+\newcommand{\makepcover}{%
+\def\m{master}
+\ifx\@course\m
+  \begin{titlepage}
+    \vspace*{100mm}
+    \begin{center}
+      {\LARGE\textbf 写真}
+    \end{center}
+  \end{titlepage}
+\fi
+\def\d{doctor}
+\ifx\@course\d
+  \begin{titlepage}
+    \vspace*{30mm}
+    \begin{center}
+      {\huge\textbf \@title\par}			% タイトル
+      \vfill
+      \vspace{45mm}
+      {\LARGE \@facultyd\@department\par}
+      \vspace{10mm}
+      %%{\LARGE \@eyear 年度入学\par}             % 入学年度
+      %%\vspace{3mm}
+      {\LARGE \@studentid \par}                 % 学籍番号
+      \vspace{65mm}
+    \end{center}
+  \end{titlepage}
+\fi
+}
+
+%%
+%%  概要ページ
+%%
+\def\abstracttext{これは，アブストラクトです．}
+\renewcommand{\abstract}[1]{
+  \def\abstracttext{#1}
+}
+%
+\newcommand{\overview}{
+  %%\section*{概 要}
+  \vspace{7mm}
+  \begin{center}
+    {\Large\textbf \@title \par}
+    {\vspace{3mm}}
+    {\@studentid \hspace{5mm} \@author}
+  \end{center} \par
+  {\vspace{5mm}}
+  \abstracttext
+}
+%
+\newcommand{\overviewpage}{
+  \newpage
+  \thispagestyle{empty}
+  \overview
+}
+
+%%
+%%  概要
+%%
+\newcommand{\breafsummary}{
+  \def\b{bachelor}
+  \ifx\@course\b
+    \chapter*{要 旨}
+  \fi
+  \def\m{master}
+  \ifx\@course\m
+    \chapter*{概 要}
+  \fi
+  \def\d{doctor}
+  \ifx\@course\d
+    \chapter*{概 要}
+  \fi
+  %\begin{center}
+  %  {\large \@title \par}
+  %\end{center}
+  %{\vspace{10mm}}
+  \thispagestyle{empty}
+  \abstracttext
+}
+
+\newcommand{\abstractpage}{
+  \newpage
+  \thispagestyle{empty}
+  \breafsummary
+}
+
+%\def\abstract{\newpage\thispagestyle{empty}\section*{概 要}
+%  \begin{center}
+%    {\Large \@title \par}
+%    {\vspace{3mm}}
+%    {\@studentid: \@author}
+%  \end{center} \par
+%}
+%\def\endabstract{}
+
+%%
+%%  概要
+%%
+%\def\overview{\newpage\thispagestyle{empty}\section*{概 要}
+%  \begin{center}
+%    {\Large \@title \par}
+%  \end{center} \par
+%}
+%\def\endoverview{}
+
+\renewcommand{\abstractname}{要旨}
+
+%%
+%%  目次
+%%
+\def\tableofcontents{%
+  \newpage\pagenumbering{roman}
+  \chapter*{目 次\@mkboth{目 次}{目 次}}
+  \thispagestyle{empty}
+  \@starttoc{toc}}
+
+%%
+%%  図目次
+%%
+\def\listoffigures{%
+  \newpage
+  \chapter*{図 目 次\@mkboth{図 目 次}{図 目 次}}
+  \@starttoc{lof}}
+
+%%
+%%  表目次
+%%
+\def\listoftables{%
+  \newpage
+  \chapter*{表 目 次\@mkboth{表 目 次}{表 目 次}}
+  \@starttoc{lot}}
+
+%%
+%%  概要
+%%
+\def\acknowledgements{\newpage\chapter*{謝 辞}}
+\def\endacknowledgements{}
+
+%%
+%% 参考文献
+%%
+\def\thebibliography#1{%
+  %\newpage
+  %\chapter*{参考文献\@mkboth{参考文献}{参考文献}}
+  \list{[\arabic{enumi}]}
+    {\settowidth{\labelwidth}{[#1]}
+     \leftmargin=\labelwidth
+     \advance \leftmargin by \labelsep
+     \usecounter{enumi}}
+  \def\newblock{\hskip .11em plus .33em minus .07em}
+  \sloppy
+  \clubpenalty=4000 \widowpenalty=4000
+  \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+
